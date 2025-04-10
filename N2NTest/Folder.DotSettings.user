@@ -1,0 +1,23 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/zh-Hant/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" /&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/zh-Hant/Microsoft.TestPlatform.CoreUtilities.resources.dll" /&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/NuGet.Frameworks.dll" /&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/Newtonsoft.Json.dll" /&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/N2NTest.dll" /&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.Common.dll" /&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/Microsoft.TestPlatform.CommunicationUtilities.dll" /&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/Microsoft.Playwright.Xunit.dll" /&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/BoDi.dll" /&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/it/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" /&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/cs/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" /&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/cs/Microsoft.TestPlatform.CoreUtilities.resources.dll" /&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/cs/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" /&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/cs/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" /&gt;
+  &lt;Assembly Path="/Users/ville/repos/test-test/N2NTest/bin/Debug/net8.0/cs/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" /&gt;
+&lt;/AssemblyExplorer&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7933b892_002D5b58_002D4636_002Db20f_002D63b32e5346cf/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Open register form" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::2CDA5407-603E-1F05-900F-0FD7806E0FDF::net8.0::N2NTest.Feature.RegisterAUserAtShoptesterFeature.OpenRegisterForm&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
