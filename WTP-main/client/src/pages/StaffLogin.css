@@ -1,0 +1,273 @@
+/* Staff Login Page Container */
+.staff-page-container {
+  max-width: 500px;
+  margin: 5vh auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Login Container */
+.staff-login-container {
+  background: linear-gradient(145deg, #ffffff, #f0f2f5);
+  box-shadow: 0 8px 32px rgba(44, 62, 80, 0.15);
+  border: none;
+  border-radius: 15px;
+  padding: 2.5rem;
+}
+
+/* Header Styles */
+.staff-login-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.staff-login-title {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(45deg, #2980b9, #27ae60);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.staff-login-subtitle {
+  color: #7f8c8d;
+  font-size: 1rem;
+}
+
+/* Form Styles */
+.staff-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Field Group */
+.staff-field-group {
+  position: relative;
+  border: none;
+  background: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.staff-field-group:focus-within {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(41, 128, 185, 0.1);
+}
+
+/* Field Labels */
+.staff-field-label {
+  position: absolute;
+  left: 1rem;
+  top: 0.6rem;
+  font-size: 0.8rem;
+  color: #2980b9;
+  font-weight: 600;
+}
+
+/* Input Fields */
+.staff-field-input {
+  width: 100%;
+  padding: 2rem 1rem 0.8rem;
+  font-size: 1rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+.staff-field-group:focus-within .staff-field-input {
+  border-color: #2980b9;
+}
+
+/* Login Options */
+.staff-login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.staff-remember-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.staff-remember-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #2980b9;
+}
+
+.staff-remember-label {
+  font-size: 0.9rem;
+  color: #4a5568;
+  cursor: pointer;
+}
+
+.staff-forgot-password {
+  color: #2980b9;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.staff-forgot-password:hover {
+  color: #27ae60;
+  text-decoration: underline;
+}
+
+/* Button Container */
+.staff-login-button-container {
+  margin-top: 1rem;
+}
+
+/* Login Button */
+.staff-login-button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(45deg, #2980b9, #27ae60);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(41, 128, 185, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.staff-login-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(41, 128, 185, 0.4);
+}
+
+.staff-login-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(41, 128, 185, 0.3);
+}
+
+.staff-login-button.loading {
+  background: linear-gradient(45deg, #3498db, #2ecc71);
+  cursor: wait;
+}
+
+/* Loading spinner animation */
+.button-loading-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.button-spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid white;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Footer */
+.staff-login-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.staff-login-help {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.staff-login-help a {
+  color: #2980b9;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.staff-login-help a:hover {
+  color: #27ae60;
+  text-decoration: underline;
+}
+
+/* Info Boxes */
+.staff-login-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.staff-info-item {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.staff-info-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.staff-info-icon {
+  font-size: 1.5rem;
+  background: linear-gradient(45deg, #f1f5f9, #e2e8f0);
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.staff-info-text h3 {
+  color: #2c3e50;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.staff-info-text p {
+  color: #7f8c8d;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .staff-page-container {
+    margin: 2vh 1rem;
+    gap: 1.5rem;
+  }
+  
+  .staff-login-container {
+    padding: 1.5rem;
+  }
+  
+  .staff-login-title {
+    font-size: 2rem;
+  }
+  
+  .staff-login-info {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,146 @@
+/* Add to your existing Aside.css */
+
+/* Staff member container with hover effect */
+.staff-member {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.staff-member:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(5px);
+}
+
+/* Avatar image styling */
+.avatar-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Hover card - hidden by default */
+.staff-member-expanded {
+  position: absolute;
+  left: 105%;
+  top: 50%;
+  transform: translateY(-50%) scale(0.95);
+  opacity: 0;
+  visibility: hidden;
+  background: #fff;
+  width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 1.5rem;
+  z-index: 100;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+/* Show the expanded card on hover */
+.staff-member:hover .staff-member-expanded {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) scale(1);
+}
+
+/* Pointer arrow on the left side */
+.staff-member-expanded:before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 10px 10px 10px 0;
+  border-style: solid;
+  border-color: transparent #fff transparent transparent;
+}
+
+/* Expanded card header */
+.expanded-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Large avatar in expanded card */
+.expanded-avatar-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Staff info in expanded card */
+.expanded-info {
+  flex: 1;
+}
+
+.expanded-name {
+  color: #2c3e50;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.expanded-role {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Details section */
+.expanded-details {
+  border-top: 1px solid #e2e8f0;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  color: #475569;
+  font-size: 0.875rem;
+}
+
+.detail-item svg {
+  margin-right: 0.5rem;
+  color: #64748b;
+}
+
+/* Status indicator in expanded card */
+.expanded-status {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+.expanded-status-indicator {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.status-online {
+  background-color: #22c55e;
+}
+
+/* Avatar background colors matching the original design */
+.staff-member:nth-child(1) .expanded-avatar { background-color: #3498db; }
+.staff-member:nth-child(2) .expanded-avatar { background-color: #2ecc71; }
+.staff-member:nth-child(3) .expanded-avatar { background-color: #f39c12; }
+.staff-member:nth-child(4) .expanded-avatar { background-color: #e74c3c; }
+.staff-member:nth-child(5) .expanded-avatar { background-color: #9b59b6; }
+.staff-member:nth-child(6) .expanded-avatar { background-color: #1abc9c; }

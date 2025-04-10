@@ -1,0 +1,49 @@
+CREATE TABLE "users"(
+    "id" SERIAL NOT NULL,
+    "email" VARCHAR(255) NOT NULL,
+    "password" INTEGER NOT NULL,
+    "role" VARCHAR(255) CHECK
+        (
+            "role" IN('super-admin', 'företags-admin', 'kundtjänst')
+        ) NOT NULL,
+        "created_At" DATE NOT NULL,
+        "subject" VARCHAR NOT NULL
+);
+ALTER TABLE
+    "users" ADD PRIMARY KEY("id");
+ALTER TABLE
+    "users" ADD CONSTRAINT "users_email_unique" UNIQUE("email");
+ALTER TABLE
+    "users" ADD CONSTRAINT "users_password_unique" UNIQUE("password");
+CREATE TABLE "messages"(
+    "id" SERIAL NOT NULL,
+    "user_ID" INTEGER NOT NULL,
+    "order_id" INTEGER NULL,
+    "message_text" VARCHAR(255) NULL,
+    "status" BOOLEAN NOT NULL,
+    "created_at" DATE NOT NULL
+);
+ALTER TABLE
+    "messages" ADD PRIMARY KEY("id");
+
+CREATE TABLE "support_tickets"(
+    "id" SERIAL NOT NULL,
+    "user_id" INTEGER NOT NULL,
+    "message_id" INTEGER NOT NULL,
+    "status" BOOLEAN NOT NULL,
+    "created_at" DATE NOT NULL,
+    "form_answer" JSON NOT NULL
+);
+ALTER TABLE
+    "support_tickets" ADD PRIMARY KEY("id");
+ALTER TABLE
+    "support_tickets" ADD CONSTRAINT "support_tickets_message_id_foreign" FOREIGN KEY("message_id") REFERENCES "messages"("id");
+ALTER TABLE
+    "messages" ADD CONSTRAINT "messages_order_id_foreign" FOREIGN KEY("order_id") REFERENCES "support_tickets"("id");
+ALTER TABLE
+    "messages" ADD CONSTRAINT "messages_user_id_foreign" FOREIGN KEY("user_ID") REFERENCES "users"("id");
+ALTER TABLE
+    "support_tickets" ADD CONSTRAINT "support_tickets_user_id_foreign" FOREIGN KEY("user_id") REFERENCES "users"("id");
+
+
+CREATE TYPE role AS ENUM ('super-admin', 'företags-admin', 'kundtjänst');
