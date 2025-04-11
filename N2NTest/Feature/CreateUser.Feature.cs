@@ -78,13 +78,13 @@ namespace N2NTest.Feature
         
         public virtual async System.Threading.Tasks.Task FeatureBackgroundAsync()
         {
-#line 5
+#line 3
   #line hidden
-#line 6
-    await testRunner.GivenAsync("I am logged in as an admin", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 4
+    await testRunner.GivenAsync("Jag är inloggad som admin", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 7
-    await testRunner.AndAsync("I navigate to the create user page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 5
+    await testRunner.AndAsync("jag navigerar till create user sidan", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         
@@ -98,130 +98,32 @@ namespace N2NTest.Feature
             await this.TestTearDownAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Successfully create a new user")]
+        [Xunit.SkippableFactAttribute(DisplayName="Skapa en ny användare")]
         [Xunit.TraitAttribute("FeatureTitle", "skapa användare som admin")]
-        [Xunit.TraitAttribute("Description", "Successfully create a new user")]
-        public async System.Threading.Tasks.Task SuccessfullyCreateANewUser()
+        [Xunit.TraitAttribute("Description", "Skapa en ny användare")]
+        public async System.Threading.Tasks.Task SkapaEnNyAnvandare()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successfully create a new user", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Skapa en ny användare", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 7
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 3
+  await this.FeatureBackgroundAsync();
+#line hidden
+#line 8
+  await testRunner.WhenAsync("Jag fyller i uppgifterna för nya användaren", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 9
-  this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 5
-  await this.FeatureBackgroundAsync();
-#line hidden
-#line 10
-    await testRunner.WhenAsync("I fill in all required fields with valid data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 11
-    await testRunner.AndAsync("I submit the create user form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 12
-    await testRunner.ThenAsync("I should see a success message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 13
-    await testRunner.AndAsync("the form should be reset", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Create a staff user with specific details")]
-        [Xunit.TraitAttribute("FeatureTitle", "skapa användare som admin")]
-        [Xunit.TraitAttribute("Description", "Create a staff user with specific details")]
-        public async System.Threading.Tasks.Task CreateAStaffUserWithSpecificDetails()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a staff user with specific details", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 15
-  this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 5
-  await this.FeatureBackgroundAsync();
-#line hidden
-#line 16
-    await testRunner.WhenAsync("I fill in the email field with \"staff.test@example.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 17
-    await testRunner.AndAsync("I fill in the username field with \"Staff Test\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 18
-    await testRunner.AndAsync("I fill in the password field with \"StaffPass123\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 19
-    await testRunner.AndAsync("I select \"fordon\" as the company", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 20
-    await testRunner.AndAsync("I select \"staff\" as the role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 21
-    await testRunner.AndAsync("I submit the create user form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 22
-    await testRunner.ThenAsync("I should see a success message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Create an admin user with specific details")]
-        [Xunit.TraitAttribute("FeatureTitle", "skapa användare som admin")]
-        [Xunit.TraitAttribute("Description", "Create an admin user with specific details")]
-        public async System.Threading.Tasks.Task CreateAnAdminUserWithSpecificDetails()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create an admin user with specific details", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 24
-  this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 5
-  await this.FeatureBackgroundAsync();
-#line hidden
-#line 25
-    await testRunner.WhenAsync("I fill in the email field with \"admin.test@example.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 26
-    await testRunner.AndAsync("I fill in the username field with \"Admin Test\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 27
-    await testRunner.AndAsync("I fill in the password field with \"AdminPass123\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 28
-    await testRunner.AndAsync("I select \"tele\" as the company", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 29
-    await testRunner.AndAsync("I select \"admin\" as the role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 30
-    await testRunner.AndAsync("I submit the create user form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 31
-    await testRunner.ThenAsync("I should see a success message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  await testRunner.AndAsync("Jag klickar på skapa användare", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
