@@ -1,0 +1,8 @@
+# Ignorera byggfiler och Playwrights stora binärer
+N2NTest/bin/
+N2NTest/obj/
+N2NTest/node_modules/
+
+N2NTest/bin/
+N2NTest/obj/
+N2NTest/.playwright/
