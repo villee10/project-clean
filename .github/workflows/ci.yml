@@ -38,7 +38,8 @@ jobs:
         working-directory: WTP-main/server
 
       - name: Run API tests
-        run: newman run WTP-main/server/api-test/Test.postman_collection.json
+        run: newman run postman/API-Test.postman_collection.json
+
 
   # === GUI TESTS ===
   gui_tests:
