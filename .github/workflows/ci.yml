@@ -1,0 +1,92 @@
+name: CI/CD Test
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  # === API TESTS ===
+  api_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Restore .NET dependencies
+        run: dotnet restore
+        working-directory: WTP-main/server
+
+      - name: Build .NET project
+        run: dotnet build
+        working-directory: WTP-main/server
+
+      - name: Start API server
+        run: nohup dotnet run &
+        working-directory: WTP-main/server
+
+      - name: Run API tests
+        run: newman run WTP-main/server/api-test/Test.postman_collection.json
+
+  # === GUI TESTS ===
+  gui_tests:
+    runs-on: ubuntu-latest
+    needs: api_tests
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+        working-directory: N2NTest
+
+      - name: Build GUI test project
+        run: dotnet build
+        working-directory: N2NTest
+
+      - name: Install Playwright browsers
+        run: pwsh bin/Debug/net8.0/playwright.ps1 install --with-deps
+        working-directory: N2NTest
+
+      - name: Start API server
+        run: nohup dotnet run &
+        working-directory: WTP-main/server
+
+      - name: Run GUI tests
+        run: dotnet test
+        working-directory: N2NTest
+
+  # === DEPLOY ===
+  deploy:
+    name: Deploy to Server
+    runs-on: ubuntu-latest
+    needs: [api_tests, gui_tests]
+    steps:
+      - name: Deploy App via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /srv/www/<stad>/<studentnamn>
+            cd /srv/www/<stad>/<studentnamn>/projektnamn
+            git pull
