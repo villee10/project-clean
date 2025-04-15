@@ -26,12 +26,11 @@ jobs:
         run: npm install -g newman
 
       - name: Restore .NET dependencies
-        run: dotnet restore
-        working-directory: WTP-main/server
-
+        run: dotnet restore WTP-main/WTP.sln
+      
       - name: Build .NET project
-        run: dotnet build
-        working-directory: WTP-main/server
+        run: dotnet build WTP-main/WTP.sln --no-restore
+      
 
       - name: Start API server
         run: nohup dotnet run &
