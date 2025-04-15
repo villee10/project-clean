@@ -1,0 +1,492 @@
+{
+	"info": {
+		"_postman_id": "260b380a-4bec-4c9e-8783-aa8e936afb26",
+		"name": "API-Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43372578"
+	},
+	"item": [
+		{
+			"name": "Chat",
+			"item": [
+				{
+					"name": "Skicka_chat_message",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"chatToken\": \"abc123\",\n  \"sender\": \"Ville\",\n  \"message\": \"Hej\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/chat/message",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"chat",
+								"message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hämtar_meddelande_via_chattoken",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/chat/messages/abc123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"chat",
+								"messages",
+								"abc123"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Formulär",
+			"item": [
+				{
+					"name": "Skicka_fordon_formulär",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Löken\",\n  \"email\": \"löken.test@gmail.com\",\n  \"regNummer\": \"ABC123\",\n  \"issueType\": \"Garantiärende\",\n  \"message\": \"Bilen låter konstigt när jag startar den.\",\n  \"companyType\": \"Fordonsservice\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/fordon",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"fordon"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "skicka_tele_formulär",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Löken\",\n  \"email\": \"löken.test@gmail.com\",\n\"serviceType\":\"Bredband\",\n  \"issueType\": \"Tekniskt problem\",\n  \"message\": \"inget fungerar.\",\n  \"companyType\": \"Tele/Bredband\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/tele",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tele"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "skicka_forsakrings_formulär",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Löken\",\n  \"email\": \"löken.test@gmail.com\",\n\"serviceType\":\"Hemförsäkring\",\n  \"issueType\": \"Fakturafrågor\",\n  \"message\": \"hjälp mig\",\n  \"companyType\": \"Försäkringsärenden\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/forsakring",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"forsakring"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tickets",
+			"item": [
+				{
+					"name": "Hämta_tickets",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/tickets",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tickets"
+							]
+						},
+						"description": "Hämtar tickets beroende på vad du är inloggad som. i detta fallet är det fordon."
+					},
+					"response": []
+				},
+				{
+					"name": "arkivera_klar_ticket_som_inloggad",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"formType\": \"Fordonsservice\",\n  \"firstName\": \"Löken\",\n  \"email\": \"löken.test@gmail.com\",\n  \"issueType\": \"Garantiärende\",\n  \"message\": \"Bilen låter konstigt när jag startar den.\",\n  \"companyType\": \"Fordonsservice\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/tickets/archive",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tickets",
+								"archive"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get_All_Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Skapa_Användare",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"ville\",\n  \"password\": \"12345\",\n  \"company\": \"Fordonsservice\",\n  \"role\": \"staff\",\n  \"email\": \"ville.test@test.com\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "Given att jag vill skapa en ny användare  \nWhen jag skickar ett POST anrop med korrekt användardata  \nThen ska jag få ett OK svar med information om den nya användaren"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n    \"username\": \"ville.test@test.com\",\n    \"password\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "Given att jag har en registrerad användare  \nWhen jag loggar in med rätt epost och lösenord  \nThen ska jag få tillbaka användarinformation och sessionen ska sättas"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_userinfo",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n  \"firstname\": \"ville\",\n  \"password\": \"123\",\n  \"company\": \"Fordonsservice\",\n  \"role\": \"admin\",\n  \"email\": \"ville.test@test.com\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/users/66",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"66"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/users/69",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"69"
+							]
+						},
+						"description": "Given att en användare existerar i systemet  \nWhen jag skickar en DELETE begäran med användarens ID  \nThen ska användaren tas bort från databasen  \nAnd jag ska få ett \"Användare borttagen\" svar som bekräftar borttagningen"
+					},
+					"response": []
+				},
+				{
+					"name": "Kollar_ifall_en_användare_är_inloggad",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/chat/auth-status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"chat",
+								"auth-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Skicka_chat_message",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"chatToken\": \"abc123\",\n  \"sender\": \"Ville\",\n  \"message\": \"Hej\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/chat/message",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"chat",
+								"message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hämtar_meddelande_via_chattoken",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/chat/messages/abc123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"chat",
+								"messages",
+								"abc123"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
