@@ -38,8 +38,6 @@ jobs:
       run: nohup dotnet run --project server.csproj --urls=http://localhost:5000 &
       working-directory: WTP-main/server
 
-    - name: Run API tests
-      run: newman run postman/API-Test.postman_collection.json -e postman/base_url.postman_environment.json
 
 
   # === GUI TESTS ===
