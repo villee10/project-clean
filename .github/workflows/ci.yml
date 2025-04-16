@@ -69,6 +69,13 @@ jobs:
         run: nohup dotnet run --urls=http://localhost:5000 &
         working-directory: WTP-main/server
 
+
+      - name: Start frontend
+        run: nohup npm run dev -- --port=3001 &
+        working-directory: WTP-main/client
+
+        
+
       - name: Run GUI tests
         run: xvfb-run --auto-servernum --server-args='-screen 0 1024x768x24' dotnet test
         working-directory: N2NTest
