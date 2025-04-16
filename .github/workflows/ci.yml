@@ -85,13 +85,13 @@ jobs:
         echo "Waiting for frontend on http://localhost:3001..."
         for i in {1..60}; do
           if curl -s http://localhost:3001 > /dev/null; then
-            echo "✅ Frontend is up!"
+            echo " Frontend is up!"
             exit 0
           fi
-          echo "⏳ Still waiting ($i)..."
+          echo " Still waiting ($i)..."
           sleep 2
         done
-        echo "❌ Frontend failed to start in time"
+        echo " Frontend failed to start in time"
         echo "Frontend log:"
         cat WTP-main/client/frontend.log
         exit 1
@@ -118,7 +118,8 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /srv/www/malmo/william-eliasson # första gången
-            cd /srv/www/malmo/<studentnamn>/https://github.com/villee10/project-clean # andra gången 
-            git clone <https:adress> # första gången
-            git pull # andra gången
+            cd /srv/www/malmo/william-eliasson || git clone https://github.com/villee10/project-clean /srv/www/malmo/william-eliasson
+            cd /srv/www/malmo/william-eliasson
+            git pull origin main
+  # Starta servern om du vill
+
