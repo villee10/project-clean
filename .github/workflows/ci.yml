@@ -104,6 +104,14 @@ jobs:
       if: failure()
       run: cat WTP-main/client/frontend.log || echo "Ingen logg hittades"
 
+
+    - name: Debug secrets
+      run: |
+       echo "HOST: ${{ secrets.HOST }}"
+       echo "USERNAME: ${{ secrets.USERNAME }}"
+       echo "PORT: ${{ secrets.PORT }}"
+
+
   # === DEPLOY ===
    deploy:
     name: Deploy to Server
