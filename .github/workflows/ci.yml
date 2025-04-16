@@ -41,7 +41,7 @@ jobs:
 
 
   # === GUI TESTS ===
-  gui_tests:
+   gui_tests:
     runs-on: ubuntu-latest
     needs: api_tests
     steps:
