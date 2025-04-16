@@ -73,20 +73,20 @@ jobs:
         run: dotnet test
         working-directory: N2NTest
 
-  # === DEPLOY ===
   deploy:
     name: Deploy to Server
     runs-on: ubuntu-latest
-    needs: [api_tests, gui_tests]
+    needs: [api_tests, gui_tests] # Kör endast om alla tidigare tester är OK
     steps:
-      - name: Deploy App via SSH
+      - name: Deploy App
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: |
-            cd /srv/www/<stad>/<studentnamn>
-            cd /srv/www/<stad>/<studentnamn>/projektnamn
-            git pull
+          script: | 
+            cd /srv/www/malmo/william-eliasson # första gången
+            cd /srv/www/malmo/<studentnamn>/https://github.com/villee10/project-clean # andra gången 
+            git clone <https:adress> # första gången
+            git pull # andra gången
