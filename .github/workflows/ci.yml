@@ -73,6 +73,20 @@ jobs:
         run: nohup npm run dev -- --port=3001 &
         working-directory: WTP-main/client
 
+      - name: Wait for API to be ready
+        run: |
+          for i in {1..30}; do
+           if curl -s http://localhost:5000 > /dev/null; then
+            echo "API is up!"
+            break
+          fi
+          echo "Waiting for API to start..."
+          sleep 2
+          done
+
+
+
+
       - name: Wait for frontend to be ready
         run: |
           for i in {1..30}; do
