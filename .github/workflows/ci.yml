@@ -27,7 +27,7 @@ jobs:
 
       - name: Restore .NET dependencies
         run: dotnet restore server.csproj
-        working-directory: WTP-main
+        
 
       - name: Build .NET project
         run: dotnet build server.csproj --no-restore
