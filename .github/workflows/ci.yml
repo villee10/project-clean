@@ -40,8 +40,9 @@ jobs:
 
 
 
+  
   # === GUI TESTS ===
-  gui_tests:
+   gui_tests:
     runs-on: ubuntu-latest
     needs: api_tests
     steps:
@@ -70,7 +71,7 @@ jobs:
         working-directory: WTP-main/server
 
       - name: Start frontend
-        run: nohup npm run dev -- --port=3001 &
+        run: nohup npm run dev -- --port=3001 --silent > frontend.log 2>&1 &
         working-directory: WTP-main/client
 
       - name: Wait for frontend to be ready
@@ -88,6 +89,9 @@ jobs:
         run: xvfb-run --auto-servernum --server-args='-screen 0 1024x768x24' dotnet test
         working-directory: N2NTest
 
+      - name: Visa frontend-logg vid fel
+        if: failure()
+        run: cat WTP-main/client/frontend.log || echo "Ingen logg hittades"
 
   # === DEPLOY ===
    deploy:
