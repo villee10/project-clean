@@ -42,56 +42,66 @@ jobs:
 
   
   # === GUI TESTS ===
+# === GUI TESTS ===
    gui_tests:
     runs-on: ubuntu-latest
     needs: api_tests
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
+    - name: Check out code
+      uses: actions/checkout@v4
 
-      - name: Set up .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
 
-      - name: Restore dependencies
-        run: dotnet restore
-        working-directory: N2NTest
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: N2NTest
 
-      - name: Build GUI test project
-        run: dotnet build
-        working-directory: N2NTest
+    - name: Build GUI test project
+      run: dotnet build
+      working-directory: N2NTest
 
-      - name: Install Playwright browsers
-        run: pwsh bin/Debug/net8.0/playwright.ps1 install --with-deps
-        working-directory: N2NTest
+    - name: Install Playwright browsers
+      run: pwsh bin/Debug/net8.0/playwright.ps1 install --with-deps
+      working-directory: N2NTest
 
-      - name: Start API server
-        run: nohup dotnet run --urls=http://localhost:5000 &
-        working-directory: WTP-main/server
+    - name: Start API server
+      run: nohup dotnet run --urls=http://localhost:5000 &
+      working-directory: WTP-main/server
 
-      - name: Start frontend
-        run: nohup npm run dev -- --port=3001 --silent > frontend.log 2>&1 &
-        working-directory: WTP-main/client
+    - name: Install frontend dependencies
+      run: npm ci
+      working-directory: WTP-main/client
 
-      - name: Wait for frontend to be ready
-        run: |
-          for i in {1..30}; do
-            if curl -s http://localhost:3001 > /dev/null; then
-              echo "Frontend is up!"
-              break
-            fi
-            echo "Waiting for frontend to start..."
-            sleep 2
-          done
+    - name: Start frontend
+      run: nohup npm run dev -- --port=3001 --silent > frontend.log 2>&1 &
+      working-directory: WTP-main/client
 
-      - name: Run GUI tests
-        run: xvfb-run --auto-servernum --server-args='-screen 0 1024x768x24' dotnet test
-        working-directory: N2NTest
+    - name: Wait for frontend to be ready
+      run: |
+        echo "Waiting for frontend on http://localhost:3001..."
+        for i in {1..60}; do
+          if curl -s http://localhost:3001 > /dev/null; then
+            echo "✅ Frontend is up!"
+            exit 0
+          fi
+          echo "⏳ Still waiting ($i)..."
+          sleep 2
+        done
+        echo "❌ Frontend failed to start in time"
+        echo "Frontend log:"
+        cat WTP-main/client/frontend.log
+        exit 1
 
-      - name: Visa frontend-logg vid fel
-        if: failure()
-        run: cat WTP-main/client/frontend.log || echo "Ingen logg hittades"
+    - name: Run GUI tests
+      run: xvfb-run --auto-servernum --server-args='-screen 0 1024x768x24' dotnet test
+      working-directory: N2NTest
+
+    - name: Visa frontend-logg vid fel
+      if: failure()
+      run: cat WTP-main/client/frontend.log || echo "Ingen logg hittades"
 
   # === DEPLOY ===
    deploy:
