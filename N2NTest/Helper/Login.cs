@@ -13,7 +13,7 @@ namespace N2NTest.Helper
 
             await page.ClickAsync("button:has-text('LOGGA IN')");
 
-            await page.WaitForURLAsync("**/staff/dashboard");
+            await page.WaitForURLAsync("**/admin/dashboard");
         }
 
         
