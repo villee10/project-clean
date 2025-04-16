@@ -26,16 +26,16 @@ jobs:
         run: npm install -g newman
 
       - name: Restore .NET dependencies
-        run: dotnet restore WTP.sln
+        run: dotnet restore server.csproj
         working-directory: WTP-main
 
       - name: Build .NET project
-        run: dotnet build WTP.sln --no-restore
+        run: dotnet build server.csproj --no-restore
         working-directory: WTP-main
 
       - name: Start API server
         run: nohup dotnet run --urls=http://localhost:5000 &
-        working-directory: WTP-main/server
+        working-directory: WTP-main
 
       - name: Run API tests
         run: newman run postman/API-Test.postman_collection.json -e postman/base_url.postman_environment.json
@@ -86,7 +86,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: | 
+          script: |
             cd /srv/www/malmo/william-eliasson # första gången
             cd /srv/www/malmo/<studentnamn>/https://github.com/villee10/project-clean # andra gången 
             git clone <https:adress> # första gången
