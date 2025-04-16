@@ -6,39 +6,47 @@ on:
 
 jobs:
   # === API TESTS ===
-  api_tests:
+    api_tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
+    - name: Check out code
+      uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
 
-      - name: Set up .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
 
-      - name: Install Newman
-        run: npm install -g newman
+    - name: Install Newman
+      run: npm install -g newman
 
-      - name: Restore .NET dependencies
-        run: dotnet restore WTP-main/WTP.sln
-      
-      - name: Build .NET project
-        run: dotnet build WTP-main/WTP.sln --no-restore
-      
+    - name: Restore .NET dependencies
+      run: dotnet restore WTP-main/WTP.sln
 
-      - name: Start API server
-        run: nohup dotnet run &
-        working-directory: WTP-main/server
+    - name: Build .NET project
+      run: dotnet build WTP-main/WTP.sln --no-restore
 
-  
-      - name: Run API tests
-        run: newman run postman/API-Test.postman_collection.json -e postman/base_url.postman_environment.json
+    - name: Start API server
+      run: nohup dotnet run --urls=http://localhost:5000 &
+      working-directory: WTP-main/server
+
+    - name: Wait for API to be ready
+      run: |
+        echo "Waiting for API to start..."
+        until curl --output /dev/null --silent --head --fail http://localhost:5000; do
+          echo "Still waiting for API..."
+          sleep 2
+        done
+        echo "API is up!"
+
+    - name: Run API tests
+      run: newman run postman/API-Test.postman_collection.json -e postman/base_url.postman_environment.json
+
 
 # === GUI TESTS ===
   gui_tests:
