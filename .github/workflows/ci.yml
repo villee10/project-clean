@@ -76,8 +76,9 @@ jobs:
       working-directory: WTP-main/client
 
     - name: Start frontend
-      run: nohup npm run dev -- --port=3001 --silent > frontend.log 2>&1 &
+      run: nohup npm run dev -- --port=3001 > frontend.log 2>&1 &
       working-directory: WTP-main/client
+
 
     - name: Wait for frontend to be ready
       run: |
