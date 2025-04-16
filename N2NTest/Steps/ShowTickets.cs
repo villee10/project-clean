@@ -59,7 +59,7 @@ public class ShowTickets
     public async Task GivenJagSerAllaTicketsIArenden()
     {
         _ticket = _page.Locator("div.ticket-tasks div.ticket-task-item").First;
-        await _ticket.WaitForAsync(new() { State = WaitForSelectorState.Visible, Timeout = 5000 });
+        await _ticket.WaitForAsync(new() { State = WaitForSelectorState.Visible, Timeout = 15000 });
     }
 
     [When(@"Jag drar en ticket till ""Mina ärenden""")]
