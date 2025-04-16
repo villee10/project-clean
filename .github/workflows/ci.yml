@@ -70,8 +70,9 @@ jobs:
         working-directory: WTP-main/server
 
       - name: Run GUI tests
-        run: dotnet test
+        run: xvfb-run --auto-servernum --server-args='-screen 0 1024x768x24' dotnet test
         working-directory: N2NTest
+
 
   # === DEPLOY ===
    deploy:
