@@ -126,8 +126,9 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /srv/www/malmo/william-eliasson
-            git clone https://github.com/villee10/project-clean
+            cd /srv/www/malmo/william-eliasson/project-clean
+            git pull 
+            
           
   # Starta servern om du vill
 
