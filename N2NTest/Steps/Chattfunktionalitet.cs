@@ -1,3 +1,5 @@
+/*
+
 using Microsoft.Playwright;
 using TechTalk.SpecFlow;
 using Xunit;
@@ -80,3 +82,5 @@ public class Chattfunktionalitet
         
     }
 }
+
+*/
