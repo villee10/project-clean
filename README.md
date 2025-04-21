@@ -1,4 +1,4 @@
-Testing – Testmiljö för WTP i project-clean
+**Testing – Testmiljö för WTP i project-clean**
 
 Detta repo innehåller en testmiljö för CRM-systemet **WTP**, med enhetstester, API-tester och end-to-end-tester. Projektet är uppdelat i separata mappar för testtyperna, samt själva systemet i `WTP-main`.
 
