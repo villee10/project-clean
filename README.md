@@ -18,11 +18,12 @@ project-clean/
 
 ## 🧪 Innehåll i testsviten
 
-| Testtyp          | Plats         | Teknologi               | Innehåll                          |
-|------------------|---------------|--------------------------|-----------------------------------|
-| Enhetstestning   | WTP-main/     | xUnit                    | Inbyggda tester (t.ex. användare) |
-| API-testning     | postman/      | Postman + Newman         | Login, tickets, chatt             |
-| End-to-end (E2E) | N2NTest/      | SpecFlow + Playwright    | Fulla användarflöden via GUI      |
+| Testtyp          | Plats              | Teknologi               | Innehåll                          |
+|------------------|--------------------|--------------------------|-----------------------------------|
+| API-testning     | postman/           | Postman + Newman         | Login, tickets, chatt             |
+| End-to-end (E2E) | N2NTest/           | SpecFlow + Playwright    | Fulla användarflöden via GUI      |
+| CI/CD            | .github/workflows/ | GitHub Actions           | Bygg, testa och verifiera         |
+
 
 ## ⚙️ Komma igång lokalt
 
@@ -74,4 +75,4 @@ Databas: PostgreSQL
 
 Testning: Postman, Playwright, SpecFlow
 
-CI/CD: GitHub Actions (kan utökas)
+CI/CD: GitHub Actions
