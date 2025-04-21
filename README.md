@@ -66,7 +66,7 @@ dotnet test
 Testerna körs automatiskt via GitHub Actions vid varje push. Resultat och rapporter finns i fliken "Actions".
 
 
-🧠 Teknologier
+**🧠 Teknologier**
 Frontend: React + Vite
 
 Backend: ASP.NET Core (.NET 8, Minimal API)
